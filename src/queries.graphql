@@ -1,0 +1,8 @@
+query GetClinics {
+  clinics {
+    id
+    name
+    location
+    visits { id patient time fee}
+  }
+}
