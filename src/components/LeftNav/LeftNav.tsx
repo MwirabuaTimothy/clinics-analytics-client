@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components'
 import '../../css/skeleton.css';
-import folder from '../../svg/folder.svg';
-import activity from '../../svg/activity.svg';
-import chat from '../../svg/chat.svg';
-import sliders from '../../svg/sliders.svg';
+import folder from '../../icons/folder.svg';
+import activity from '../../icons/activity.svg';
+import chat from '../../icons/chat.svg';
+import sliders from '../../icons/sliders.svg';
+import Icon from '../../icons/Icon';
 
 const LeftNav: React.FC = () => {
 
   return (
     <$LeftNav className="one column">
-      <Img src={folder} className="folder" alt="folder" />
-      <Img src={activity} className="activity active" alt="activity" />
-      <Img src={chat} className="chat" alt="chat" />
-      <Img src={sliders} className="sliders" alt="sliders" />
+      <Icon src={folder} className="folder" alt="folder" />
+      <Icon src={activity} className="activity" alt="activity"  active={true} />
+      <Icon src={chat} className="chat" alt="chat" />
+      <Icon src={sliders} className="sliders" alt="sliders" />
     </$LeftNav>
   );
 };
@@ -25,12 +26,4 @@ const $LeftNav = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`
-const Img = styled.img`
-  width: 22px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin: 0 auto;
-  display: inline-flex;
-  cursor: pointer;
 `
