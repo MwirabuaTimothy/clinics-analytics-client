@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header'
+import LeftNav from './components/LeftNav/LeftNav'
 import ClinicsNav from './components/ClinicsNav/ClinicsNav'
 import KeyIssues from './components/KeyIssues/KeyIssues'
 import MonitoringPeriod from './components/MonitoringPeriod/MonitoringPeriod'
@@ -11,7 +12,7 @@ const App: React.FC = () => {
 
   return (
     <div className="row">
-      <div className="one column">Left Nav</div>
+      <LeftNav/>
       <div className="eleven columns">
         <Header/>
         <div className="row">
