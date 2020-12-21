@@ -1,29 +1,42 @@
 import React from 'react';
-import { useGetVisitsQuery } from "./generated/graphql";
 
+import styled from 'styled-components'
 const App: React.FC = () => {
-  const { data, loading, error } = useGetVisitsQuery({ 
-    variables: {
-      take: 5,
-      skip: 0,
-      orderBy: "patient",
-      ascending: false,
-      page: 3,
-      clinicId: 1,
-      issueId: 3,
-      startDate: 1577750400000,
-      endDate: 1579000000000
-    }
-  });
-  if (loading) {
-    return <div>Loading</div>;
-  }
-  
-  if (error) {
-    return <div>{error.message}</div>;
-  }
-  console.log(data)
-  return <div>yo</div>;
+
+  return (
+    <Container>
+      <LeftNav/>
+      <Column>
+        <Header/>
+        <Column>
+          <ClinicsNav/>
+          <Column>
+            <KeyIssues/>
+            <MonitoringPeriod/>
+            <StaffTable/>
+          </Column>
+        </Column>
+      </Column>
+    </Container>
+  );
 };
 
 export default App;
+
+const Container = styled.div`
+  width: "100%";
+`
+const LeftNav = styled.div`
+`
+const Column = styled.div`
+`
+const Header = styled.div`
+`
+const ClinicsNav = styled.div`
+`
+const KeyIssues = styled.div`
+`
+const MonitoringPeriod = styled.div`
+`
+const StaffTable = styled.div`
+`
