@@ -1,5 +1,7 @@
 {
-  "name": "clinics-client",
+  "name": "clinics-analytics-client",
+  "description": "Analytics platform to help in the measurement and optimization of key metrics that can improve the operational efficiency of clinic staff",
+  "author": "@TimTruston",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
