@@ -1,42 +1,33 @@
 import React from 'react';
+import Header from './components/Header/Header'
+import ClinicsNav from './components/ClinicsNav/ClinicsNav'
+import KeyIssues from './components/KeyIssues/KeyIssues'
+import MonitoringPeriod from './components/MonitoringPeriod/MonitoringPeriod'
+import StaffTable from './components/StaffTable/StaffTable'
 
-import styled from 'styled-components'
+import './css/skeleton.css';
+
 const App: React.FC = () => {
 
   return (
-    <Container>
-      <LeftNav/>
-      <Column>
+    <div className="row">
+      <div className="one column">Left Nav</div>
+      <div className="eleven columns">
         <Header/>
-        <Column>
-          <ClinicsNav/>
-          <Column>
+        <div className="row">
+          <div className="three columns">
+            <ClinicsNav/>
+          </div>
+          <div className="nine columns">
             <KeyIssues/>
             <MonitoringPeriod/>
             <StaffTable/>
-          </Column>
-        </Column>
-      </Column>
-    </Container>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default App;
 
-const Container = styled.div`
-  width: "100%";
-`
-const LeftNav = styled.div`
-`
-const Column = styled.div`
-`
-const Header = styled.div`
-`
-const ClinicsNav = styled.div`
-`
-const KeyIssues = styled.div`
-`
-const MonitoringPeriod = styled.div`
-`
-const StaffTable = styled.div`
-`
