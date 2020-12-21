@@ -1,17 +1,31 @@
 import React from 'react';
 import styled from 'styled-components'
 import '../../css/skeleton.css';
+import { Button } from '../../css/styled';
 
 const MonitoringPeriod: React.FC = () => {
 
   return (
-    <div className="u-full-width">
-      <Button>MonitoringPeriod</Button>
-    </div>
+    <Styled>
+      <h4>Monitoring Period</h4>
+      <Button>Day</Button>
+      <Button>Week</Button>
+      <Button>Month</Button>
+      <Button>Year</Button>
+      <Button>Date Range</Button>
+    </Styled>
   );
 };
 
 export default MonitoringPeriod;
 
-const Button = styled.button`
+const Styled = styled.div`
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 30px;
+  box-sizing: border-box;
+  & > button {
+    margin: 5px; 
+  }
 `

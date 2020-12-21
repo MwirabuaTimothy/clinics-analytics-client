@@ -9,7 +9,7 @@ import { ReactComponent as Sliders } from '../../icons/sliders.svg';
 const LeftNav: React.FC = () => {
 
   return (
-    <Container className="one column">
+    <Container>
       <Folder className="icon folder" stroke="#999" fill="none" width="30" height="30"/>
       <Activity className="icon activity" stroke="#4e1ed4" fill="none" width="30" height="30" />
       <Chat className="icon chat" stroke="#999" fill="none" width="30" height="30"/>
@@ -21,6 +21,10 @@ const LeftNav: React.FC = () => {
 export default LeftNav;
 
 const Container = styled.div`
+  position: fixed;
+  width: 80px;
+  background-color: #fff;
+  border-right: 2px solid #eee;
   height: 100%;
   display: flex;
   flex-direction: column;

@@ -17,14 +17,16 @@ const Header: React.FC = () => {
 
 export default Header;
 
+const Container = styled.div`
+  background-color: #fff;
+  height: 80px;
+  padding: 20px;
+`
+
 const PlusIcon = styled(Plus)`
   padding-top: 0px;
   padding-bottom: 0px;
   margin-bottom: -6px;
   margin-right: -10px;
   margin-left: 8px;
-`
-
-const Container = styled.div`
-  padding: 20px;
 `

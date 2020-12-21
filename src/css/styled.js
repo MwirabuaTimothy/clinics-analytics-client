@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Button = styled.button`
   border-width: 2px;
+  border-color: #ddd;
   &:active,
   &:hover {
     border-color: #4e1ed4;
