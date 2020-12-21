@@ -111,59 +111,124 @@ export type Visit = {
   staffId: Scalars['Float'];
 };
 
-export type GetClinicsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetVisitsQueryVariables = Exact<{
+  take: Scalars['Float'];
+  skip: Scalars['Float'];
+  orderBy: Scalars['String'];
+  ascending: Scalars['Boolean'];
+  page: Scalars['Float'];
+  clinicId: Scalars['Float'];
+  issueId: Scalars['Float'];
+  startDate: Scalars['Float'];
+  endDate: Scalars['Float'];
+}>;
 
 
-export type GetClinicsQuery = (
+export type GetVisitsQuery = (
   { __typename?: 'Query' }
-  & { clinics: Array<(
-    { __typename?: 'Clinic' }
-    & Pick<Clinic, 'id' | 'name' | 'location'>
-    & { visits: Array<(
-      { __typename?: 'Visit' }
-      & Pick<Visit, 'id' | 'patient' | 'time' | 'fee'>
-    )> }
+  & { visits: Array<(
+    { __typename?: 'Visit' }
+    & Pick<Visit, 'id' | 'patient' | 'time' | 'fee' | 'promoter_score' | 'staffId' | 'clinicId' | 'issueId'>
+  )> }
+);
+
+export type GetStaffsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetStaffsQuery = (
+  { __typename?: 'Query' }
+  & { staffs: Array<(
+    { __typename?: 'Staff' }
+    & Pick<Staff, 'id' | 'name' | 'rank' | 'efficiency' | 'efficiency_delta1' | 'efficiency_delta2' | 'nps_delta1' | 'nps_delta2' | 'reported_issues'>
   )> }
 );
 
 
-export const GetClinicsDocument = gql`
-    query GetClinics {
-  clinics {
+export const GetVisitsDocument = gql`
+    query getVisits($take: Float!, $skip: Float!, $orderBy: String!, $ascending: Boolean!, $page: Float!, $clinicId: Float!, $issueId: Float!, $startDate: Float!, $endDate: Float!) {
+  visits(take: $take, skip: $skip, orderBy: $orderBy, ascending: $ascending, page: $page, clinicId: $clinicId, issueId: $issueId, startDate: $startDate, endDate: $endDate) {
     id
-    name
-    location
-    visits {
-      id
-      patient
-      time
-      fee
-    }
+    patient
+    time
+    fee
+    promoter_score
+    staffId
+    clinicId
+    issueId
   }
 }
     `;
 
 /**
- * __useGetClinicsQuery__
+ * __useGetVisitsQuery__
  *
- * To run a query within a React component, call `useGetClinicsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetClinicsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetVisitsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVisitsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetClinicsQuery({
+ * const { data, loading, error } = useGetVisitsQuery({
+ *   variables: {
+ *      take: // value for 'take'
+ *      skip: // value for 'skip'
+ *      orderBy: // value for 'orderBy'
+ *      ascending: // value for 'ascending'
+ *      page: // value for 'page'
+ *      clinicId: // value for 'clinicId'
+ *      issueId: // value for 'issueId'
+ *      startDate: // value for 'startDate'
+ *      endDate: // value for 'endDate'
+ *   },
+ * });
+ */
+export function useGetVisitsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetVisitsQuery, GetVisitsQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetVisitsQuery, GetVisitsQueryVariables>(GetVisitsDocument, baseOptions);
+      }
+export function useGetVisitsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetVisitsQuery, GetVisitsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetVisitsQuery, GetVisitsQueryVariables>(GetVisitsDocument, baseOptions);
+        }
+export type GetVisitsQueryHookResult = ReturnType<typeof useGetVisitsQuery>;
+export type GetVisitsLazyQueryHookResult = ReturnType<typeof useGetVisitsLazyQuery>;
+export type GetVisitsQueryResult = ApolloReactCommon.QueryResult<GetVisitsQuery, GetVisitsQueryVariables>;
+export const GetStaffsDocument = gql`
+    query getStaffs {
+  staffs {
+    id
+    name
+    rank
+    efficiency
+    efficiency_delta1
+    efficiency_delta2
+    nps_delta1
+    nps_delta2
+    reported_issues
+  }
+}
+    `;
+
+/**
+ * __useGetStaffsQuery__
+ *
+ * To run a query within a React component, call `useGetStaffsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetStaffsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetStaffsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetClinicsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
+export function useGetStaffsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
       }
-export function useGetClinicsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
+export function useGetStaffsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
         }
-export type GetClinicsQueryHookResult = ReturnType<typeof useGetClinicsQuery>;
-export type GetClinicsLazyQueryHookResult = ReturnType<typeof useGetClinicsLazyQuery>;
-export type GetClinicsQueryResult = ApolloReactCommon.QueryResult<GetClinicsQuery, GetClinicsQueryVariables>;
+export type GetStaffsQueryHookResult = ReturnType<typeof useGetStaffsQuery>;
+export type GetStaffsLazyQueryHookResult = ReturnType<typeof useGetStaffsLazyQuery>;
+export type GetStaffsQueryResult = ApolloReactCommon.QueryResult<GetStaffsQuery, GetStaffsQueryVariables>;
