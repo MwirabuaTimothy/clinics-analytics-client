@@ -111,6 +111,39 @@ export type Visit = {
   staffId: Scalars['Float'];
 };
 
+export type GetClinicsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetClinicsQuery = (
+  { __typename?: 'Query' }
+  & { clinics: Array<(
+    { __typename?: 'Clinic' }
+    & Pick<Clinic, 'id' | 'name' | 'location'>
+  )> }
+);
+
+export type GetIssuesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetIssuesQuery = (
+  { __typename?: 'Query' }
+  & { issues: Array<(
+    { __typename?: 'Issue' }
+    & Pick<Issue, 'id' | 'name'>
+  )> }
+);
+
+export type GetStaffsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetStaffsQuery = (
+  { __typename?: 'Query' }
+  & { staffs: Array<(
+    { __typename?: 'Staff' }
+    & Pick<Staff, 'id' | 'name' | 'rank' | 'efficiency' | 'efficiency_delta1' | 'efficiency_delta2' | 'nps_delta1' | 'nps_delta2' | 'reported_issues'>
+  )> }
+);
+
 export type GetVisitsQueryVariables = Exact<{
   take: Scalars['Float'];
   skip: Scalars['Float'];
@@ -132,18 +165,114 @@ export type GetVisitsQuery = (
   )> }
 );
 
-export type GetStaffsQueryVariables = Exact<{ [key: string]: never; }>;
 
+export const GetClinicsDocument = gql`
+    query GetClinics {
+  clinics {
+    id
+    name
+    location
+  }
+}
+    `;
 
-export type GetStaffsQuery = (
-  { __typename?: 'Query' }
-  & { staffs: Array<(
-    { __typename?: 'Staff' }
-    & Pick<Staff, 'id' | 'name' | 'rank' | 'efficiency' | 'efficiency_delta1' | 'efficiency_delta2' | 'nps_delta1' | 'nps_delta2' | 'reported_issues'>
-  )> }
-);
+/**
+ * __useGetClinicsQuery__
+ *
+ * To run a query within a React component, call `useGetClinicsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetClinicsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetClinicsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetClinicsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
+      }
+export function useGetClinicsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
+        }
+export type GetClinicsQueryHookResult = ReturnType<typeof useGetClinicsQuery>;
+export type GetClinicsLazyQueryHookResult = ReturnType<typeof useGetClinicsLazyQuery>;
+export type GetClinicsQueryResult = ApolloReactCommon.QueryResult<GetClinicsQuery, GetClinicsQueryVariables>;
+export const GetIssuesDocument = gql`
+    query GetIssues {
+  issues {
+    id
+    name
+  }
+}
+    `;
 
+/**
+ * __useGetIssuesQuery__
+ *
+ * To run a query within a React component, call `useGetIssuesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetIssuesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetIssuesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetIssuesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetIssuesQuery, GetIssuesQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetIssuesQuery, GetIssuesQueryVariables>(GetIssuesDocument, baseOptions);
+      }
+export function useGetIssuesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetIssuesQuery, GetIssuesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetIssuesQuery, GetIssuesQueryVariables>(GetIssuesDocument, baseOptions);
+        }
+export type GetIssuesQueryHookResult = ReturnType<typeof useGetIssuesQuery>;
+export type GetIssuesLazyQueryHookResult = ReturnType<typeof useGetIssuesLazyQuery>;
+export type GetIssuesQueryResult = ApolloReactCommon.QueryResult<GetIssuesQuery, GetIssuesQueryVariables>;
+export const GetStaffsDocument = gql`
+    query getStaffs {
+  staffs {
+    id
+    name
+    rank
+    efficiency
+    efficiency_delta1
+    efficiency_delta2
+    nps_delta1
+    nps_delta2
+    reported_issues
+  }
+}
+    `;
 
+/**
+ * __useGetStaffsQuery__
+ *
+ * To run a query within a React component, call `useGetStaffsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetStaffsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetStaffsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetStaffsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
+      }
+export function useGetStaffsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
+        }
+export type GetStaffsQueryHookResult = ReturnType<typeof useGetStaffsQuery>;
+export type GetStaffsLazyQueryHookResult = ReturnType<typeof useGetStaffsLazyQuery>;
+export type GetStaffsQueryResult = ApolloReactCommon.QueryResult<GetStaffsQuery, GetStaffsQueryVariables>;
 export const GetVisitsDocument = gql`
     query getVisits($take: Float!, $skip: Float!, $orderBy: String!, $ascending: Boolean!, $page: Float!, $clinicId: Float!, $issueId: Float!, $startDate: Float!, $endDate: Float!) {
   visits(take: $take, skip: $skip, orderBy: $orderBy, ascending: $ascending, page: $page, clinicId: $clinicId, issueId: $issueId, startDate: $startDate, endDate: $endDate) {
@@ -192,43 +321,3 @@ export function useGetVisitsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHo
 export type GetVisitsQueryHookResult = ReturnType<typeof useGetVisitsQuery>;
 export type GetVisitsLazyQueryHookResult = ReturnType<typeof useGetVisitsLazyQuery>;
 export type GetVisitsQueryResult = ApolloReactCommon.QueryResult<GetVisitsQuery, GetVisitsQueryVariables>;
-export const GetStaffsDocument = gql`
-    query getStaffs {
-  staffs {
-    id
-    name
-    rank
-    efficiency
-    efficiency_delta1
-    efficiency_delta2
-    nps_delta1
-    nps_delta2
-    reported_issues
-  }
-}
-    `;
-
-/**
- * __useGetStaffsQuery__
- *
- * To run a query within a React component, call `useGetStaffsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetStaffsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetStaffsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetStaffsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
-      }
-export function useGetStaffsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
-        }
-export type GetStaffsQueryHookResult = ReturnType<typeof useGetStaffsQuery>;
-export type GetStaffsLazyQueryHookResult = ReturnType<typeof useGetStaffsLazyQuery>;
-export type GetStaffsQueryResult = ApolloReactCommon.QueryResult<GetStaffsQuery, GetStaffsQueryVariables>;

@@ -1,11 +1,33 @@
-# query GetClinics {
-#   clinics {
-#     id
-#     name
-#     location
-#     visits { id patient time fee}
-#   }
-# }
+query GetClinics {
+  clinics {
+    id
+    name
+    location
+    # visitCount
+  }
+}
+
+query GetIssues {
+  issues {
+    id
+    name
+    # subtitle
+  }
+}
+
+query getStaffs {
+  staffs {
+    id
+    name
+    rank
+    efficiency
+    efficiency_delta1
+    efficiency_delta2
+    nps_delta1
+    nps_delta2
+    reported_issues
+  }
+}
 
 query getVisits(
     $take: Float!,
@@ -37,19 +59,5 @@ query getVisits(
     staffId
     clinicId
     issueId
-  }
-}
-
-query getStaffs {
-  staffs { 
-    id
-    name
-    rank
-    efficiency
-    efficiency_delta1
-    efficiency_delta2
-    nps_delta1
-    nps_delta2
-    reported_issues
   }
 }
