@@ -36,11 +36,6 @@ const Styled = styled.div`
       top: 0px;
       right: 0px;
     }
-    :hover {
-      & > svg circle {      
-        fill: #4e1ed4;
-      }
-    }
     &.active {
       background-color: #4e1ed4;
       border-color: #4e1ed4;

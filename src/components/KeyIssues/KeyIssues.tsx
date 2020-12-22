@@ -55,7 +55,7 @@ const Styled = styled.div`
     text-align: left;
     padding: 5px 25px 5px 10px;
     min-width: 145px;
-    height: auto;
+    height: 48px;
     > b {
       display: block;
       font-size: 11px; 
@@ -71,11 +71,6 @@ const Styled = styled.div`
       position: absolute;
       top: 0px;
       right: 0px;
-    }
-    :hover {
-      & > svg circle {      
-        fill: #4e1ed4;
-      }
     }
   }
 `
