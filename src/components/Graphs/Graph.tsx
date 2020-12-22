@@ -16,62 +16,62 @@ interface Props {
 }
 
 const Graph: React.FC<Props> = (props) => {
-    const options = {
-        chart: {
-            parentHeightOffset: 0,
-            toolbar: {
-                show: false
-            },
-            sparkline: {
-                enabled: true,
-            }
-        },
-        xaxis: {
-            crosshairs: {
-                width: 1,
-            },
-        },
-        stroke: {
-            width: 2,
-            curve: 'smooth',
-        },
-        tooltip: {
-            theme: 'dark',
-            fixed: {
-                enabled: false
-            },
-            x: {
-                show: false
-            },
-            y: {
-                title: {
-                    formatter: function () {
-                        return ''
-                    }
-                }
-            },
-            marker: {
-                show: false
-            }
-        },
-        colors: [props.color],
-    };
-    const type = 'line';
-    const series = [{ name: props.title || 'Data', data: props.data || [] }];
+  const options = {
+    chart: {
+      parentHeightOffset: 0,
+      toolbar: {
+        show: false
+      },
+      sparkline: {
+        enabled: true,
+      }
+    },
+    xaxis: {
+      crosshairs: {
+        width: 1,
+      },
+    },
+    stroke: {
+      width: 3,
+      curve: 'smooth',
+    },
+    tooltip: {
+      theme: 'dark',
+      fixed: {
+        enabled: false
+      },
+      x: {
+        show: false
+      },
+      y: {
+        title: {
+          formatter: function () {
+            return ''
+          }
+        }
+      },
+      marker: {
+        show: false
+      }
+    },
+    colors: [props.color],
+  };
+  const type = 'line';
+  const series = [{ name: props.title || 'Data', data: props.data || [] }];
 
-    return (
-      <Styled>
-        <Title>{props.title}</Title>
-          <Left>
-              <Figure>{props.figure}</Figure>
-              <Sub>{props.sub}</Sub>
-              <Indicator className={props.trend.textClass}><i className={`${props.trend.icon}`}></i>{props.trend.value}</Indicator>
-          </Left>
-          <Right>
-            <Chart options={options} series={series} type={type} height="100%" width="100%" />
-          </Right>
-      </Styled>
-    );
+  return (
+    <Styled>
+      <Title>{props.title}</Title>
+      <Left>
+        <Figure>{props.figure}</Figure>
+        <Sub>{props.sub}</Sub>
+        <Indicator className={props.trend.textClass}><i className={`${props.trend.icon}`}></i>{props.trend.value}</Indicator>
+      </Left>
+      <Right>
+        <Chart options={options} series={series} type={type} height="100%" width="100%" />
+      </Right>
+    </Styled>
+  );
 };
 
 export default Graph;
