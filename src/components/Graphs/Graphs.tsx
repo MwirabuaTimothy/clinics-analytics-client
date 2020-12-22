@@ -8,9 +8,36 @@ const Graphs: React.FC = () => {
 
   return (
     <Styled>
-      <FootFall/>
-      <PatientSatisfaction/>
-      <Revenue/>
+      <FootFall
+        title="Foot Fall"
+        figure="13k"
+        sub="patients"
+        data={[25, 36, 40, 35, 37, 47, 54]}
+        trend={{
+          textClass: 'text-success',
+          icon: 'uil uil-arrow-up',
+          value: '+0,2'
+        }}/>
+      <PatientSatisfaction
+        title="Patient Satisfaction"
+        figure="7.8"
+        sub="nps"
+        data={[25, 56, 70, 65, 56, 47, 42]}
+        trend={{
+          textClass: 'text-danger',
+          icon: 'uil uil-arrow-up',
+          value: '-0,1'
+        }}/>
+      <Revenue
+        title="Revenue"
+        figure="4.2m"
+        sub="Kenya Shillings"
+        data={[25, 36, 40, 35, 37, 47, 54]}
+        trend={{
+          textClass: 'text-success',
+          icon: 'uil uil-arrow-up',
+          value: '+2,4'
+        }}/>
     </Styled>
   );
 };

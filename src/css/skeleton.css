@@ -451,3 +451,11 @@ there.
 
 /* Desktop HD */
 @media (max-width: 1200px) {}
+
+
+.text-success {
+  color: #43d39e
+}
+.text-danger {
+  color:red
+}
