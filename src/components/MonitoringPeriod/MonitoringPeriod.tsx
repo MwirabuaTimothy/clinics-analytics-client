@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Button } from '../../css/styled';
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/themes/airbnb.css";
+import { ReactComponent as Range } from '../../icons/dates.svg';
 
 const MonitoringPeriod: React.FC = () => {
 
@@ -13,7 +16,22 @@ const MonitoringPeriod: React.FC = () => {
         <Button>Month</Button>
         <Button>Year</Button>
       </div>
-      <Button>Date Range</Button>
+      <DateRangePicker>
+        <Range className="icon dots" fill="#666" width="32" height="32"/>
+        <Flatpickr 
+          value={[new Date('2019-12-10'), new Date('2020-01-10')]} 
+          options={{
+            mode: "range",
+            minDate: "2019-12-01",
+            maxDate: "today",
+            dateFormat: "d M Y"
+          }}
+          onChange={date => {
+            console.log('from', date[0]);
+            console.log('to', date[1]) 
+          }}
+          />
+      </DateRangePicker>
     </Styled>
   );
 };
@@ -49,5 +67,31 @@ const Styled = styled.div`
   }
   > button {
     margin-left: 14px;
+  }
+  .flatpickr-input  {    
+    height: 48px;
+    width: 250px;
+    padding-left: 55px;
+    border: 2px solid #ddd;
+
+  }
+`
+const DateRangePicker = styled.div`
+  position: relative;
+  display: inline-block;
+  height: 38px;
+  margin-left: 30px;
+  > svg {
+    top: 8px;
+    left: 15px;
+    position: absolute;
+  }
+  :hover {
+    > input {
+      border-color: #4e1ed4;
+    }
+    > svg rect {
+      fill: #4e1ed4;
+    }
   }
 `
