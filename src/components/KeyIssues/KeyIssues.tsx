@@ -28,7 +28,7 @@ const KeyIssues: React.FC = () => {
       <h4>Key Issues</h4>
       <div>
         {issues?.map(issue => (
-          <Button className={issue.id === active ? "active" : ''} onClick={() => selectIssue(issue.id)}>
+          <Button key={issue.id} className={issue.id === active ? "active" : ''} onClick={() => selectIssue(issue.id)}>
             <b>{ issue.name }</b>
             <small>{ issue.location }</small>
             <Dots className="icon dots" fill="#ddd" width="28" height="28"/>

@@ -28,7 +28,7 @@ const ClinicsNav: React.FC = () => {
     <Styled>
       <h4>Visits</h4>
       {clinics?.map(clinic => (
-        <Button className={clinic.id === active ? "active" : ''} onClick={() => selectClinic(clinic.id)}>
+        <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => selectClinic(clinic.id)}>
           <span>{ clinic.visitsCount }</span>
           <span>{ clinic.name }</span>
           <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
