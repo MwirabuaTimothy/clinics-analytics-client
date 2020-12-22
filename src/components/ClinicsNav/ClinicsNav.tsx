@@ -9,13 +9,40 @@ const ClinicsNav: React.FC = () => {
   return (
     <Styled>
       <h4>Visits</h4>
-      <Button className="active">Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>Clinics Nav Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>Clinics Nav<Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
+      <Button className="active">
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
+      <Button>
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
+      <Button>
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
+      <Button>
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
+      <Button>
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
+      <Button>
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
+      <Button>
+        <span>15</span>
+        <span>Clinics Nav</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
     </Styled>
   );
 };
@@ -28,13 +55,6 @@ const Styled = styled.div`
   > button {
     width: 100%;
     margin-bottom: 10px; 
-    position: relative;
-    > svg {      
-      margin-top: 7px;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-    }
     &.active {
       background-color: #4e1ed4;
       border-color: #4e1ed4;

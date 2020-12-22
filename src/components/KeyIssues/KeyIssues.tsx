@@ -50,7 +50,6 @@ const Styled = styled.div`
   padding: 20px;
   box-sizing: border-box;
   > button {
-    position: relative;
     text-align: left;
     padding: 5px 25px 5px 10px;
     min-width: 145px;
@@ -67,12 +66,6 @@ const Styled = styled.div`
       display: block;
       font-size: 8px; 
       line-height: 14px;
-    }
-    > svg {      
-      margin-top: 7px;
-      position: absolute;
-      top: 0px;
-      right: 0px;
     }
   }
 `

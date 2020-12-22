@@ -7,9 +7,9 @@ const Header: React.FC = () => {
 
   return (
     <Container className="u-full-width">
-      <Button>Add Assessment 
-        <PlusIcon className="icon plus" stroke="#999" fill="none" width="24" height="24"/>
-      </Button>
+      <Btn>Add Assessment 
+        <Plus className="icon plus" stroke="#999" fill="none" width="24" height="24"/>
+      </Btn>
     </Container>
   );
 };
@@ -22,10 +22,11 @@ const Container = styled.div`
   padding: 20px;
 `
 
-const PlusIcon = styled(Plus)`
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-bottom: -6px;
-  margin-right: -10px;
-  margin-left: 8px;
+const Btn = styled(Button)`
+  width: 200px;
+  text-align: left;
+  > svg{
+    top: 9px;
+    right: 8px;
+  }
 `
