@@ -1,33 +1,48 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import { useGetStaffsQuery } from "../../generated/graphql";
+
 const StaffTable: React.FC = () => {
+  
+  let { data, loading, error } = useGetStaffsQuery();
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
+  
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
+  const staffs = data?.staffs;
 
   return (
     <Styled>
-      <h4>StaffTable</h4>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Sex</th>
-            <th>Location</th>
+            <th>No</th>
+            <th>Staff Name</th>
+            <th colSpan={2}>Efficiency Delta</th>
+            <th colSpan={2}>NPS Delta</th>
+            <th>Efficiency</th>
+            <th>Reported Issues</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Dave Gamache</td>
-            <td>26</td>
-            <td>Male</td>
-            <td>San Francisco</td>
-          </tr>
-          <tr>
-            <td>Dwayne Johnson</td>
-            <td>42</td>
-            <td>Male</td>
-            <td>Hayward</td>
-          </tr>
+          {staffs?.map(staff => (
+            <tr key={staff.id}>
+              <td>{staff.id}</td>
+              <td>{staff.name}</td>
+              <td>{staff.efficiency_delta1}</td>
+              <td>{staff.efficiency_delta2}</td>
+              <td>{staff.nps_delta1}</td>
+              <td>{staff.nps_delta2}</td>
+              <td>{staff.efficiency}</td>
+              <td>{staff.reported_issues}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Styled>
