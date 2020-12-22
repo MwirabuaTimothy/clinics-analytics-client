@@ -45,11 +45,17 @@ const Container = styled.div`
   margin-left: 80px;
   width: calc(100% - 80px);
   display: inline-block;
+  @media (max-width: 900px) {
+    margin-left: 50px;
+    width: calc(100% - 50px);
+  }
 `
 const Content = styled.div`
-  margin-top: 40px;
-  padding-left: 40px;
+  padding-top: 40px;
   padding-bottom: 40px;
+  padding-left: 3%;
+  padding-right: 3%;
+
 `
 const Body = styled.div`
   display: flex;
@@ -60,12 +66,11 @@ const Body = styled.div`
 const ClinicsNavContainer = styled.div`
   width: 300px;
   @media (max-width: 900px) {
-    width: 96%;
+    width: 100%;
   }
 `
 const Inner = styled.div`
   margin-left: 2%;
-  padding-right: 2%;
   flex-grow: 1;
   @media (max-width: 900px) {
     margin-top: 30px;

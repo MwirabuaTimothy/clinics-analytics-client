@@ -22,6 +22,9 @@ export default LeftNav;
 const Container = styled.div`
   position: fixed;
   width: 80px;
+  @media (max-width: 900px) {
+    width: 50px;
+  }
   background-color: #fff;
   border-right: 2px solid #eee;
   height: 100%;
