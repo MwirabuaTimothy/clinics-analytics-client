@@ -54,7 +54,10 @@ const Styled = styled.div`
   padding: 20px;
   > button {
     width: 100%;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 25px;
+    text-align: left;
     &.active {
       background-color: #4e1ed4;
       border-color: #4e1ed4;
@@ -65,6 +68,13 @@ const Styled = styled.div`
       :hover {
         background-color: #5e3fb3;
       }
+      > span:first-child {
+        color: #fff;
+      }
+    }
+    > span:first-child {
+      margin-right: 10px;
+      color: #4e1ed4;
     }
   }
 `
