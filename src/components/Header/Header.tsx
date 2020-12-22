@@ -18,7 +18,7 @@ export default Header;
 
 const Container = styled.div`
   background-color: #fff;
-  height: 80px;
+  height: 90px;
   padding: 20px;
 `
 

@@ -1,48 +1,37 @@
-import { truncate } from 'fs';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Button } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
+import { useGetClinicsQuery } from "../../generated/graphql";
 
 const ClinicsNav: React.FC = () => {
+  
+  const [active, setActive] = useState('0') 
+  const selectClinic = (clinic_id: React.SetStateAction<string>) => {
+    setActive(clinic_id)
+  }
+  let { data, loading, error } = useGetClinicsQuery();
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
+  
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+  
+  const clinics = data?.clinics;
 
   return (
     <Styled>
       <h4>Visits</h4>
-      <Button className="active">
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/></Button>
-      <Button>
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-      </Button>
-      <Button>
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-      </Button>
-      <Button>
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-      </Button>
-      <Button>
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-      </Button>
-      <Button>
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-      </Button>
-      <Button>
-        <span>15</span>
-        <span>Clinics Nav</span>
-        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-      </Button>
+      {clinics?.map(clinic => (
+        <Button className={clinic.id === active ? "active" : ''} onClick={() => selectClinic(clinic.id)}>
+          <span>15</span>
+          <span>{ clinic.name }</span>
+          <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+        </Button>
+      ))}
     </Styled>
   );
 };

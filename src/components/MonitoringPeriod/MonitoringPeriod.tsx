@@ -46,8 +46,13 @@ const Styled = styled.div`
   box-sizing: border-box;
   .button-group {
     display: inline-block;
+    @media (max-width: 1100px) {
+      display: flex;
+      width: 100%;
+    }
     > button {
       margin-left: 0px;
+      flex: 1;
       :first-child {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -64,23 +69,28 @@ const Styled = styled.div`
         border-right-width: 1px;
       }
     }
+
   }
   > button {
     margin-left: 14px;
   }
   .flatpickr-input  {    
-    height: 48px;
-    width: 250px;
+    height: 100%;
+    width: 100%;
     padding-left: 55px;
     border: 2px solid #ddd;
-
   }
 `
 const DateRangePicker = styled.div`
+  height: 48px;
+  width: 250px;
   position: relative;
   display: inline-block;
-  height: 38px;
-  margin-left: 30px;
+  margin-left: 28px;
+  @media (max-width: 1100px) {
+    margin-left: 0;
+    width: 100%;
+  }
   > svg {
     top: 8px;
     left: 15px;
