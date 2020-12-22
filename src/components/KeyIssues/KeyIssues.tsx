@@ -8,7 +8,7 @@ const KeyIssues: React.FC = () => {
   return (
     <Styled>
       <h4>Key Issues</h4>
-      <Button>
+      <Button className="first">
         <b>Key Issues Issues</b>
         <small>Kosovo</small>
         <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
@@ -50,12 +50,14 @@ const Styled = styled.div`
   padding: 20px;
   box-sizing: border-box;
   > button {
-    margin: 8px; 
     position: relative;
     text-align: left;
     padding: 5px 25px 5px 10px;
     min-width: 145px;
-    height: 48px;
+    margin-left: 14px;
+    &.first {
+      margin-left: 0;
+    }
     > b {
       display: block;
       font-size: 11px; 

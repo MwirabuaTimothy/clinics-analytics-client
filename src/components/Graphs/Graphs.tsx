@@ -27,7 +27,7 @@ const Styled = styled.div`
     margin-left: 2%;
     float: left;
     box-sizing: border-box;
-    :first-child{
+    :first-child {
       margin-left: 0;
     }
   }

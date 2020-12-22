@@ -29,7 +29,6 @@ const Styled = styled.div`
     width: 100%;
     margin-bottom: 10px; 
     position: relative;
-    height: 48px;
     > svg {      
       margin-top: 7px;
       position: absolute;
