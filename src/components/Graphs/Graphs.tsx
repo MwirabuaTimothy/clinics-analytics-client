@@ -1,38 +1,39 @@
 import React from 'react';
-import FootFall from './FootFall';
-import PatientSatisfaction from './PatientSatisfaction';
-import Revenue from './Revenue';
+import Graph from './Graph';
 import styled from 'styled-components'
 
 const Graphs: React.FC = () => {
 
   return (
     <Styled>
-      <FootFall
+      <Graph
         title="Foot Fall"
         figure="13k"
         sub="patients"
         data={[25, 36, 40, 35, 37, 47, 54]}
+        color="#43d39e"
         trend={{
           textClass: 'text-success',
           icon: 'uil uil-arrow-up',
           value: '+0,2'
         }}/>
-      <PatientSatisfaction
+      <Graph
         title="Patient Satisfaction"
         figure="7.8"
         sub="nps"
         data={[25, 56, 70, 65, 56, 47, 42]}
+        color="#ff0000"
         trend={{
           textClass: 'text-danger',
           icon: 'uil uil-arrow-up',
           value: '-0,1'
         }}/>
-      <Revenue
+      <Graph
         title="Revenue"
         figure="4.2m"
         sub="Kenya Shillings"
         data={[25, 36, 40, 35, 37, 47, 54]}
+        color="#43d39e"
         trend={{
           textClass: 'text-success',
           icon: 'uil uil-arrow-up',

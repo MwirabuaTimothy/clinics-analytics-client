@@ -7,6 +7,7 @@ interface Props {
   figure: string;
   sub: string;
   data: number[];
+  color: string;
   trend: {
     icon: string,
     value: string,
@@ -14,7 +15,7 @@ interface Props {
   };
 }
 
-const FootFall: React.FC<Props> = (props) => {
+const Graph: React.FC<Props> = (props) => {
     const options = {
         chart: {
             parentHeightOffset: 0,
@@ -53,7 +54,7 @@ const FootFall: React.FC<Props> = (props) => {
                 show: false
             }
         },
-        colors: ['#43d39e'],
+        colors: [props.color],
     };
     const type = 'line';
     const series = [{ name: props.title || 'Data', data: props.data || [] }];
@@ -73,7 +74,7 @@ const FootFall: React.FC<Props> = (props) => {
     );
 };
 
-export default FootFall;
+export default Graph;
 
 const Styled = styled.div`
   background-color: #fff;
