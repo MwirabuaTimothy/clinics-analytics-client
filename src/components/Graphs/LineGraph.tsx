@@ -22,6 +22,7 @@ export default LineGraph;
 
 const Styled = styled.div`
   background-color: #fff;
+  display: inline-block;
 `
 const Line = styled.div`
   height: 5px;

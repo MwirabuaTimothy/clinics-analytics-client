@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 import { useGetStaffsQuery } from "../../generated/graphql";
+import LineGraph from '../Graphs/LineGraph';
 
 const StaffTable: React.FC = () => {
   
@@ -39,7 +40,7 @@ const StaffTable: React.FC = () => {
               <td>{staff.efficiency_delta2}</td>
               <td>{staff.nps_delta1}</td>
               <td>{staff.nps_delta2}</td>
-              <td>{staff.efficiency}</td>
+              <td><Eff>{staff.efficiency}</Eff> <LineGraph width="150px" filled={staff.efficiency + "%"}/></td>
               <td>{staff.reported_issues}</td>
             </tr>
           ))}
@@ -61,4 +62,7 @@ const Styled = styled.div`
   & > table {
     width: 100%
   }
+`
+const Eff = styled.span`
+  margin-right: 20px;
 `
