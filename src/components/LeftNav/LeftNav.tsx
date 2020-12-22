@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import '../../css/skeleton.css';
 import { ReactComponent as Folder } from '../../icons/folder.svg';
 import { ReactComponent as Activity } from '../../icons/activity.svg';
 import { ReactComponent as Chat } from '../../icons/chat.svg';

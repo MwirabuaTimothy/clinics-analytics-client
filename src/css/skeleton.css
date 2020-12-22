@@ -48,8 +48,8 @@
     padding: 0; }
 }
 
-/* For devices larger than 550px */
-@media (min-width: 550px) {
+/* For devices larger than 800px */
+@media (min-width: 800px) {
   .container {
     width: 80%; }
   .column,
@@ -112,6 +112,14 @@
 
 }
 
+/* For devices smaller than 800px */
+@media (max-width: 800px) {
+.column,
+.columns {
+  width: 96%;
+  float: left;
+  box-sizing: border-box; }
+}
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -419,3 +427,27 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+/* mobile */
+@media (max-width: 400px) {}
+
+/* phablet (also point when grid becomes active) */
+@media (max-width: 550px) {
+}
+
+/* tablet */
+@media (max-width: 750px) {
+  button {
+    padding: 0 10px;
+  }
+}
+
+/* desktop */
+@media (max-width: 1000px) {
+  button {
+    padding: 0 20px;
+  }
+}
+
+/* Desktop HD */
+@media (max-width: 1200px) {}

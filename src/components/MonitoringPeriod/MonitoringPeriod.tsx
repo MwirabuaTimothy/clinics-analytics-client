@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import '../../css/skeleton.css';
 import { Button } from '../../css/styled';
 
 const MonitoringPeriod: React.FC = () => {

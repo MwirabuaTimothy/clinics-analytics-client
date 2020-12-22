@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components'
-import '../../css/skeleton.css';
 
 const PatientSatisfaction: React.FC = () => {
 
   return (
-    <Styled className="four columns">
+    <Styled>
       <h4>Patient Satisfaction</h4>
     </Styled>
   );

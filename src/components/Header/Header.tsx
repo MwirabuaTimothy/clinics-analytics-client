@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import '../../css/skeleton.css';
 import { Button } from '../../css/styled'
 import { ReactComponent as Plus } from '../../icons/plus.svg';
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import '../../css/skeleton.css';
 import { Button } from '../../css/styled';
 
 const ClinicsNav: React.FC = () => {
@@ -9,7 +8,7 @@ const ClinicsNav: React.FC = () => {
     <Styled>
       <h4>Visits</h4>
       <Button>Clinics Nav</Button>
-      <Button>Clinics Nav</Button>
+      <Button>Clinics Nav Clinics Nav</Button>
       <Button>Clinics Nav</Button>
       <Button>Clinics Nav</Button>
       <Button>Clinics Nav</Button>

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import '../../css/skeleton.css';
 
 const StaffTable: React.FC = () => {
 
@@ -40,7 +39,6 @@ export default StaffTable;
 
 const Styled = styled.div`
   width: 100%;
-  height: 100%;
   background-color: #fff;
   padding: 20px;
   margin-top: 30px;
