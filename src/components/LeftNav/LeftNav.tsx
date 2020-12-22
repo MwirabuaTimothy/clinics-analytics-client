@@ -36,7 +36,8 @@ const Container = styled.div`
     padding-top: 18px; 
     padding-bottom: 18px; 
     cursor: pointer;
-    :hover path {
+    :hover path, 
+    :hover line {
       stroke: #4e1ed4;
     }
   }
