@@ -26,7 +26,9 @@ export type Issue = {
   __typename?: 'Issue';
   id: Scalars['ID'];
   name: Scalars['String'];
+  location: Scalars['String'];
   visits: Array<Visit>;
+  visitsCount: Scalars['Float'];
 };
 
 export type Mutation = {
@@ -39,6 +41,7 @@ export type Mutation = {
 
 
 export type MutationCreateIssueArgs = {
+  location: Scalars['String'];
   name: Scalars['String'];
 };
 
@@ -129,7 +132,7 @@ export type GetIssuesQuery = (
   { __typename?: 'Query' }
   & { issues: Array<(
     { __typename?: 'Issue' }
-    & Pick<Issue, 'id' | 'name'>
+    & Pick<Issue, 'id' | 'name' | 'location'>
   )> }
 );
 
@@ -205,6 +208,7 @@ export const GetIssuesDocument = gql`
   issues {
     id
     name
+    location
   }
 }
     `;

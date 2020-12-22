@@ -11,7 +11,7 @@ query GetIssues {
   issues {
     id
     name
-    # subtitle
+    location
   }
 }
 

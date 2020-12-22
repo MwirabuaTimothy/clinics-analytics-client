@@ -7,9 +7,11 @@ import { useGetClinicsQuery } from "../../generated/graphql";
 const ClinicsNav: React.FC = () => {
   
   const [active, setActive] = useState('0') 
+
   const selectClinic = (clinic_id: React.SetStateAction<string>) => {
     setActive(clinic_id)
   }
+  
   let { data, loading, error } = useGetClinicsQuery();
 
   if (loading) {
