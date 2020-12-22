@@ -11,7 +11,7 @@ const ClinicsNav: React.FC = () => {
   const selectClinic = (clinic_id: React.SetStateAction<string>) => {
     setActive(clinic_id)
   }
-  
+
   let { data, loading, error } = useGetClinicsQuery();
 
   if (loading) {
@@ -29,7 +29,7 @@ const ClinicsNav: React.FC = () => {
       <h4>Visits</h4>
       {clinics?.map(clinic => (
         <Button className={clinic.id === active ? "active" : ''} onClick={() => selectClinic(clinic.id)}>
-          <span>15</span>
+          <span>{ clinic.visitsCount }</span>
           <span>{ clinic.name }</span>
           <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
         </Button>

@@ -20,6 +20,7 @@ export type Clinic = {
   name: Scalars['String'];
   location: Scalars['String'];
   visits: Array<Visit>;
+  visitsCount: Scalars['Float'];
 };
 
 export type Issue = {
@@ -121,7 +122,7 @@ export type GetClinicsQuery = (
   { __typename?: 'Query' }
   & { clinics: Array<(
     { __typename?: 'Clinic' }
-    & Pick<Clinic, 'id' | 'name' | 'location'>
+    & Pick<Clinic, 'id' | 'name' | 'location' | 'visitsCount'>
   )> }
 );
 
@@ -175,6 +176,7 @@ export const GetClinicsDocument = gql`
     id
     name
     location
+    visitsCount
   }
 }
     `;
