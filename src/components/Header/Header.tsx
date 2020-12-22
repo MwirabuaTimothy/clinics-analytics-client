@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { Button } from '../../css/styled'
 import { ReactComponent as Plus } from '../../icons/plus.svg';
+import LineGraph from '../Graphs/LineGraph';
 
 const Header: React.FC = () => {
 
@@ -10,6 +11,17 @@ const Header: React.FC = () => {
       <Btn>Add Assessment 
         <Plus className="icon plus" stroke="#999" fill="none" width="24" height="24"/>
       </Btn>
+      <Right>
+        <Performance>
+          <LineGraph width="200px" filled="30%"/>
+          <Stat>24k / 24k patients seen</Stat>
+        </Performance>
+        <Profile>
+          <Name>Sandra Mamai</Name>
+          <Email>smamai@accessafya.com</Email>
+        </Profile>
+        <Img src="./profile.png"/>
+      </Right>
     </Container>
   );
 };
@@ -29,4 +41,31 @@ const Btn = styled(Button)`
     top: 9px;
     right: 8px;
   }
+`
+const Right = styled.div`
+  float: right;
+`
+const Performance = styled.div`
+  display: inline-block;
+  margin-right: 20px;
+`
+const Stat = styled.div`
+  font-size: 14px;
+`
+const Profile = styled.div`
+  display: inline-block;
+  margin-right: 20px;
+`
+const Name = styled.div`
+  font-weight: bold;
+`
+const Email = styled.div`
+  font-size: 14px;
+`
+const Img = styled.img`
+  float: right;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: -5px;
 `
