@@ -1,12 +1,22 @@
 import React from 'react';
 import styled from 'styled-components'
-
 import { useGetStaffsQuery } from "../../generated/graphql";
 import LineGraph from '../Graphs/LineGraph';
 
-const StaffTable: React.FC = () => {
+
+interface Props {
+  startDate: number;
+  endDate: number;
+}
+
+const StaffTable: React.FC<Props> = (props) => {
   
-  let { data, loading, error } = useGetStaffsQuery();
+  let { data, loading, error } = useGetStaffsQuery({ 
+    variables: {
+      startDate: props.startDate,
+      endDate: props.endDate
+    }
+  });
 
   if (loading) {
     return <div>Loading</div>;
@@ -33,8 +43,8 @@ const StaffTable: React.FC = () => {
         </thead>
         <tbody>
           {staffs?.map(staff => (
-            <tr key={staff.id}>
-              <td>{staff.id}</td>
+            <tr key={staff.rank}>
+              <td>{staff.rank}</td>
               <td>{staff.name}</td>
               <td>{staff.efficiency_delta1}</td>
               <td>{staff.efficiency_delta2}</td>

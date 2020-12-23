@@ -21,7 +21,6 @@ export type Clinic = {
   location: Scalars['String'];
   visits: Array<Visit>;
   visitsCount: Scalars['Float'];
-  visitsTime: Scalars['Float'];
 };
 
 export type Issue = {
@@ -75,6 +74,12 @@ export type Query = {
   staffs: Array<Staff>;
   visits: Array<Visit>;
   clinics: Array<Clinic>;
+};
+
+
+export type QueryStaffsArgs = {
+  startDate?: Maybe<Scalars['Float']>;
+  endDate?: Maybe<Scalars['Float']>;
 };
 
 
@@ -147,7 +152,10 @@ export type GetIssuesQuery = (
   )> }
 );
 
-export type GetStaffsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetStaffsQueryVariables = Exact<{
+  startDate: Scalars['Float'];
+  endDate: Scalars['Float'];
+}>;
 
 
 export type GetStaffsQuery = (
@@ -252,8 +260,8 @@ export type GetIssuesQueryHookResult = ReturnType<typeof useGetIssuesQuery>;
 export type GetIssuesLazyQueryHookResult = ReturnType<typeof useGetIssuesLazyQuery>;
 export type GetIssuesQueryResult = ApolloReactCommon.QueryResult<GetIssuesQuery, GetIssuesQueryVariables>;
 export const GetStaffsDocument = gql`
-    query getStaffs {
-  staffs {
+    query getStaffs($startDate: Float!, $endDate: Float!) {
+  staffs(startDate: $startDate, endDate: $endDate) {
     id
     name
     rank
@@ -279,6 +287,8 @@ export const GetStaffsDocument = gql`
  * @example
  * const { data, loading, error } = useGetStaffsQuery({
  *   variables: {
+ *      startDate: // value for 'startDate'
+ *      endDate: // value for 'endDate'
  *   },
  * });
  */

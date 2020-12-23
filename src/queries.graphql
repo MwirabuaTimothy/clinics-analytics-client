@@ -21,8 +21,14 @@ query GetIssues {
   }
 }
 
-query getStaffs {
-  staffs {
+query getStaffs(
+    $startDate: Float!,
+    $endDate: Float!,
+  ) {
+  staffs(
+    startDate: $startDate
+    endDate: $endDate
+  ) {
     id
     name
     rank
