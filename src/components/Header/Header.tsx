@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       </Btn>
       <Right>
         <Performance>
-          <LineGraph width="200px" filled="30%"/>
+          <LineGraph filled="30%"/>
           <Stat>24k / 24k patients seen</Stat>
         </Performance>
         <Profile>
@@ -48,6 +48,7 @@ const Right = styled.div`
 const Performance = styled.div`
   display: inline-block;
   margin-right: 20px;
+  width: 200px;
 `
 const Stat = styled.div`
   font-size: 14px;

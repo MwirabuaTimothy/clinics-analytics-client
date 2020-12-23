@@ -50,8 +50,8 @@ const StaffTable: React.FC<Props> = (props) => {
               <td>{staff.efficiency_delta2}</td>
               <td>{staff.nps_delta1}</td>
               <td>{staff.nps_delta2}</td>
-              <td><Eff>{staff.efficiency}</Eff> <LineGraph width="150px" filled={staff.efficiency + "%"}/></td>
-              <td>{staff.reported_issues}</td>
+              <td><Txt>{staff.efficiency}</Txt> <LineGraph filled={staff.efficiency + "%"}/></td>
+              <td><Txt>{staff.reported_issues}</Txt> <LineGraph filled={staff.reported_issues*10 + "%"}/></td>
             </tr>
           ))}
         </tbody>
@@ -73,6 +73,6 @@ const Styled = styled.div`
     width: 100%
   }
 `
-const Eff = styled.span`
+const Txt = styled.span`
   margin-right: 20px;
 `

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components'
 
 interface Props {
-  width?: string;
   height?: string;
   filled: string;
 }
@@ -10,7 +9,7 @@ interface Props {
 const LineGraph: React.FC<Props> = (props) => {
 
   return (
-    <Styled style={{ width: props.width, height: props.height }}>
+    <Styled style={{ height: props.height }}>
       <Line>
         <Filled style={{ width: props.filled }} />
       </Line>
@@ -21,6 +20,7 @@ const LineGraph: React.FC<Props> = (props) => {
 export default LineGraph;
 
 const Styled = styled.div`
+  width: 100%;
   background-color: #fff;
   display: inline-block;
 `
