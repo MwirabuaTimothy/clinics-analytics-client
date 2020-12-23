@@ -1,8 +1,57 @@
 import React from 'react';
 import Graph from './Graph';
 import styled from 'styled-components'
+import { useGetVisitsQuery } from "../../generated/graphql";
+import { shuffle } from '../../utilities';
 
-const Graphs: React.FC = () => {
+interface Props {
+  startDate: number;
+  endDate: number;
+}
+
+const Graphs: React.FC<Props> = (props) => {
+
+  let { data, loading, error } = useGetVisitsQuery({ 
+    variables: {
+      startDate: props.startDate,
+      endDate: props.endDate,
+      clinicId: 1,
+      issueId: 3,
+    }
+  });
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
+  
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+  
+  const visits = data?.visits;
+
+
+  // footfall graph
+  let footfall:number[] =  [];
+
+  let dailyCount:any = {};
+  visits?.forEach(visit => {
+    if (dailyCount[visit.time]){
+      dailyCount[visit.time] ++
+    }
+    else {
+      dailyCount[visit.time] = 1
+    }
+  })
+  footfall =  Object.values(dailyCount);
+  
+  if(footfall.length === 1){ // its the same date
+    footfall = [25, 36, 40, 35, 37, 47, 54] // mock visits per hour
+  }
+
+  let nps = shuffle(footfall)
+  let revenue = shuffle(footfall)
+  console.log(footfall, nps, revenue)
 
   return (
     <Styled>
@@ -10,7 +59,7 @@ const Graphs: React.FC = () => {
         title="Foot Fall"
         figure="13k"
         sub="patients"
-        data={[25, 36, 40, 35, 37, 47, 54]}
+        data={footfall}
         color="#43d39e"
         trend={{
           textClass: 'text-success',
@@ -21,7 +70,7 @@ const Graphs: React.FC = () => {
         title="Patient Satisfaction"
         figure="7.8"
         sub="nps"
-        data={[25, 56, 70, 65, 56, 47, 42]}
+        data={nps}
         color="#ff0000"
         trend={{
           textClass: 'text-danger',
@@ -32,7 +81,7 @@ const Graphs: React.FC = () => {
         title="Revenue"
         figure="4.2m"
         sub="Kenya Shillings"
-        data={[25, 36, 40, 35, 37, 47, 54]}
+        data={revenue}
         color="#43d39e"
         trend={{
           textClass: 'text-success',
@@ -42,6 +91,7 @@ const Graphs: React.FC = () => {
     </Styled>
   );
 };
+
 
 export default Graphs;
 

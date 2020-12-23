@@ -84,11 +84,6 @@ export type QueryStaffsArgs = {
 
 
 export type QueryVisitsArgs = {
-  skip?: Maybe<Scalars['Float']>;
-  take?: Maybe<Scalars['Float']>;
-  page?: Maybe<Scalars['Float']>;
-  orderBy?: Maybe<Scalars['String']>;
-  ascending: Scalars['Boolean'];
   clinicId?: Maybe<Scalars['Float']>;
   issueId?: Maybe<Scalars['Float']>;
   startDate?: Maybe<Scalars['Float']>;
@@ -167,11 +162,6 @@ export type GetStaffsQuery = (
 );
 
 export type GetVisitsQueryVariables = Exact<{
-  take: Scalars['Float'];
-  skip: Scalars['Float'];
-  orderBy: Scalars['String'];
-  ascending: Scalars['Boolean'];
-  page: Scalars['Float'];
   clinicId: Scalars['Float'];
   issueId: Scalars['Float'];
   startDate: Scalars['Float'];
@@ -302,8 +292,8 @@ export type GetStaffsQueryHookResult = ReturnType<typeof useGetStaffsQuery>;
 export type GetStaffsLazyQueryHookResult = ReturnType<typeof useGetStaffsLazyQuery>;
 export type GetStaffsQueryResult = ApolloReactCommon.QueryResult<GetStaffsQuery, GetStaffsQueryVariables>;
 export const GetVisitsDocument = gql`
-    query getVisits($take: Float!, $skip: Float!, $orderBy: String!, $ascending: Boolean!, $page: Float!, $clinicId: Float!, $issueId: Float!, $startDate: Float!, $endDate: Float!) {
-  visits(take: $take, skip: $skip, orderBy: $orderBy, ascending: $ascending, page: $page, clinicId: $clinicId, issueId: $issueId, startDate: $startDate, endDate: $endDate) {
+    query getVisits($clinicId: Float!, $issueId: Float!, $startDate: Float!, $endDate: Float!) {
+  visits(clinicId: $clinicId, issueId: $issueId, startDate: $startDate, endDate: $endDate) {
     id
     patient
     time
@@ -328,11 +318,6 @@ export const GetVisitsDocument = gql`
  * @example
  * const { data, loading, error } = useGetVisitsQuery({
  *   variables: {
- *      take: // value for 'take'
- *      skip: // value for 'skip'
- *      orderBy: // value for 'orderBy'
- *      ascending: // value for 'ascending'
- *      page: // value for 'page'
  *      clinicId: // value for 'clinicId'
  *      issueId: // value for 'issueId'
  *      startDate: // value for 'startDate'

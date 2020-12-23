@@ -35,7 +35,7 @@ const App: React.FC = () => {
             <Inner>
               <KeyIssues/>
               <MonitoringPeriod  startDate={startDate} endDate={endDate} setDateRange={setDateRange}/>
-              <Graphs/>
+              <Graphs startDate={startDate} endDate={endDate}/>
               <StaffTable startDate={startDate} endDate={endDate}/>
             </Inner>
           </Body>
