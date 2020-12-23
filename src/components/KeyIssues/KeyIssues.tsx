@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { Button } from '../../css/styled';
+import { Button, Title } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
 import { useGetIssuesQuery } from "../../generated/graphql";
 
@@ -25,7 +25,7 @@ const KeyIssues: React.FC = () => {
 
   return (
     <Styled>
-      <h4>Key Issues</h4>
+      <Title>Key Issues</Title>
       <div>
         {issues?.map(issue => (
           <Button key={issue.id} className={issue.id === active ? "active" : ''} onClick={() => selectIssue(issue.id)}>
@@ -53,13 +53,13 @@ const Styled = styled.div`
     margin-right: 14px;
     > b {
       display: block;
-      font-size: 11px; 
       line-height: 20px;
     }
     > small {
       display: block;
-      font-size: 8px; 
+      font-size: 10px; 
       line-height: 14px;
+      color: #aaa;
     }
   }
 `

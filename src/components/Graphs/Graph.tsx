@@ -81,7 +81,7 @@ const Styled = styled.div`
   padding: 20px;
 `
 const Title = styled.h4`
-  font-size: 20px;
+  font-size: 18px;
 `
 const Left = styled.div`
   width: 30%;
@@ -98,10 +98,10 @@ const Figure = styled.h4`
   margin-bottom: 5px;
 `
 const Sub = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 5px;
 `
 const Indicator = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 5px;
 `

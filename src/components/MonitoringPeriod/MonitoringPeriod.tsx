@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Button } from '../../css/styled';
+import { Button, Title } from '../../css/styled';
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/airbnb.css";
 import { ReactComponent as Range } from '../../icons/dates.svg';
@@ -44,7 +44,7 @@ const MonitoringPeriod: React.FC<Props> = (props) => {
 
   return (
     <Styled>
-      <h4>Monitoring Period</h4>
+      <Title>Monitoring Period</Title>
       <div className="button-group">
         <Button onClick={setDay}>Day</Button>
         <Button onClick={setWeek}>Week</Button>

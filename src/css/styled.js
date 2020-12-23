@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 
+export const Title = styled.p`
+  color: #aaa;
+  font-size: 14px;
+  text-transform: uppercase;
+`
+
 export const Button = styled.button`
+  font-size: 14px;
   border-width: 2px;
   border-color: #ddd;
   height: 48px;

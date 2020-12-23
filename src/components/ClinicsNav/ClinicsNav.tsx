@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { Button } from '../../css/styled';
+import { Button, Title } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
 import { useGetClinicsQuery } from "../../generated/graphql";
 
@@ -36,7 +36,7 @@ const ClinicsNav: React.FC<Props> = (props) => {
 
   return (
     <Styled>
-      <h4>Visits</h4>
+      <Title>Visits</Title>
       {clinics?.map(clinic => (
         <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => selectClinic(clinic.id)}>
           <span>{ clinic.visitsCount }</span>

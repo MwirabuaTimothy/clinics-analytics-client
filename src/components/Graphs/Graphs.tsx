@@ -51,14 +51,14 @@ const Graphs: React.FC<Props> = (props) => {
 
   let nps = shuffle(footfall)
   let revenue = shuffle(footfall)
-  console.log(footfall, nps, revenue)
+  // console.log(footfall, nps, revenue)
 
   return (
     <Styled>
       <Graph
         title="Foot Fall"
         figure="13k"
-        sub="patients"
+        sub="Patients"
         data={footfall}
         color="#43d39e"
         trend={{
@@ -69,7 +69,7 @@ const Graphs: React.FC<Props> = (props) => {
       <Graph
         title="Patient Satisfaction"
         figure="7.8"
-        sub="nps"
+        sub="NPS"
         data={nps}
         color="#ff0000"
         trend={{

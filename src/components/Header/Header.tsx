@@ -52,6 +52,7 @@ const Performance = styled.div`
 `
 const Stat = styled.div`
   font-size: 14px;
+  color: #aaa;
 `
 const Profile = styled.div`
   display: inline-block;
@@ -62,6 +63,7 @@ const Name = styled.div`
 `
 const Email = styled.div`
   font-size: 14px;
+  color: #aaa;
 `
 const Img = styled.img`
   float: right;

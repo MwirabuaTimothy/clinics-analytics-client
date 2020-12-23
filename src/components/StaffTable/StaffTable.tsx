@@ -45,12 +45,12 @@ const StaffTable: React.FC<Props> = (props) => {
           {staffs?.map(staff => (
             <tr key={staff.rank}>
               <td>{staff.rank}</td>
-              <td>{staff.name}</td>
-              <td>{staff.efficiency_delta1}</td>
+              <td><Name>{staff.name}</Name></td>
+              <td><b>{staff.efficiency_delta1}</b></td>
               <td>{staff.efficiency_delta2}</td>
-              <td>{staff.nps_delta1}</td>
+              <td><b>{staff.nps_delta1}</b></td>
               <td>{staff.nps_delta2}</td>
-              <td><Txt>{staff.efficiency}</Txt> <LineGraph filled={staff.efficiency + "%"}/></td>
+              <td><Txt>{staff.efficiency + "%"}</Txt> <LineGraph filled={staff.efficiency + "%"}/></td>
               <td><Txt>{staff.reported_issues}</Txt> <LineGraph filled={staff.reported_issues*10 + "%"}/></td>
             </tr>
           ))}
@@ -70,9 +70,21 @@ const Styled = styled.div`
   margin-top: 30px;
   box-sizing: border-box;
   & > table {
-    width: 100%
+    width: 100%;
+    td {
+      padding: 4px 15px;
+      color: #aaa;
+    }
+    b {
+      color: #666
+    }
   }
+`
+const Name = styled.span`
+  color: #4e1ed4;
 `
 const Txt = styled.span`
   margin-right: 20px;
+  font-weight: 600;
+  color: #666
 `

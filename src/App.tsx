@@ -27,7 +27,7 @@ const App: React.FC = () => {
       <Container>
         <Header/>
         <Content>
-          <h1>Analytics</h1>
+          <Title>Analytics</Title>
           <Body>
             <ClinicsNavContainer>
               <ClinicsNav startDate={startDate} endDate={endDate}/>
@@ -65,7 +65,9 @@ const Content = styled.div`
   padding-bottom: 40px;
   padding-left: 3%;
   padding-right: 3%;
-
+`
+const Title = styled.h2`
+  /* font-weight: 600; */
 `
 const Body = styled.div`
   display: flex;
