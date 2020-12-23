@@ -21,6 +21,7 @@ export type Clinic = {
   location: Scalars['String'];
   visits: Array<Visit>;
   visitsCount: Scalars['Float'];
+  visitsTime: Scalars['Float'];
 };
 
 export type Issue = {
@@ -89,6 +90,12 @@ export type QueryVisitsArgs = {
   endDate?: Maybe<Scalars['Float']>;
 };
 
+
+export type QueryClinicsArgs = {
+  startDate?: Maybe<Scalars['Float']>;
+  endDate?: Maybe<Scalars['Float']>;
+};
+
 export type Staff = {
   __typename?: 'Staff';
   id: Scalars['ID'];
@@ -115,7 +122,10 @@ export type Visit = {
   staffId: Scalars['Float'];
 };
 
-export type GetClinicsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetClinicsQueryVariables = Exact<{
+  startDate: Scalars['Float'];
+  endDate: Scalars['Float'];
+}>;
 
 
 export type GetClinicsQuery = (
@@ -171,8 +181,8 @@ export type GetVisitsQuery = (
 
 
 export const GetClinicsDocument = gql`
-    query GetClinics {
-  clinics {
+    query GetClinics($startDate: Float!, $endDate: Float!) {
+  clinics(startDate: $startDate, endDate: $endDate) {
     id
     name
     location
@@ -193,6 +203,8 @@ export const GetClinicsDocument = gql`
  * @example
  * const { data, loading, error } = useGetClinicsQuery({
  *   variables: {
+ *      startDate: // value for 'startDate'
+ *      endDate: // value for 'endDate'
  *   },
  * });
  */

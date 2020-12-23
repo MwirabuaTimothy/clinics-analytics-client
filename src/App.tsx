@@ -20,7 +20,7 @@ const App: React.FC = () => {
           <h1>Analytics</h1>
           <Body>
             <ClinicsNavContainer>
-              <ClinicsNav/>
+              <ClinicsNav startDate={1612051200000} endDate={1612137600000}/>
             </ClinicsNavContainer>
             <Inner>
               <KeyIssues/>

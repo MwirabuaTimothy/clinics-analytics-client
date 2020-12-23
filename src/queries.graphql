@@ -1,5 +1,11 @@
-query GetClinics {
-  clinics {
+query GetClinics(
+    $startDate: Float!,
+    $endDate: Float!,
+  ) {
+  clinics(
+    startDate: $startDate
+    endDate: $endDate
+  ) {
     id
     name
     location

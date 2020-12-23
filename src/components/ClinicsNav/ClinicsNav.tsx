@@ -4,7 +4,12 @@ import { Button } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
 import { useGetClinicsQuery } from "../../generated/graphql";
 
-const ClinicsNav: React.FC = () => {
+interface Props {
+  startDate: number;
+  endDate: number;
+}
+
+const ClinicsNav: React.FC<Props> = (props) => {
   
   const [active, setActive] = useState('0') 
 
@@ -12,7 +17,12 @@ const ClinicsNav: React.FC = () => {
     setActive(clinic_id)
   }
 
-  let { data, loading, error } = useGetClinicsQuery();
+  let { data, loading, error } = useGetClinicsQuery({ 
+    variables: {
+      startDate: props.startDate,
+      endDate: props.endDate
+    }
+  });
 
   if (loading) {
     return <div>Loading</div>;
