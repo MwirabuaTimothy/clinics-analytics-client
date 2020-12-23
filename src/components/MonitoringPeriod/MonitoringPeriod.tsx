@@ -4,32 +4,73 @@ import { Button } from '../../css/styled';
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/airbnb.css";
 import { ReactComponent as Range } from '../../icons/dates.svg';
+import { startOfDay, endOfDay, add } from 'date-fns';
 
-const MonitoringPeriod: React.FC = () => {
+
+interface Props {
+  setDateRange: (start: Date, end: Date) => void;
+  startDate: number;
+  endDate: number;
+}
+
+const MonitoringPeriod: React.FC<Props> = (props) => {
+
+  const setDay = () => {
+    let start = startOfDay(new Date())
+    let end = endOfDay(new Date())
+    props.setDateRange(start, end)
+  }
+  const setWeek = () => {
+    let now = new Date()
+    let start = add(now, {
+      weeks: -1,
+    })
+    props.setDateRange(start, now)
+  }
+  const setMonth = () => {
+    let now = new Date()
+    let start = add(now, {
+      months: -1,
+    })
+    props.setDateRange(start, now)
+  }
+  const setYear = () => {
+    let now = new Date()
+    let start = add(now, {
+      years: -1,
+    })
+    props.setDateRange(start, now)
+  }
 
   return (
     <Styled>
       <h4>Monitoring Period</h4>
       <div className="button-group">
-        <Button>Day</Button>
-        <Button>Week</Button>
-        <Button>Month</Button>
-        <Button>Year</Button>
+        <Button onClick={setDay}>Day</Button>
+        <Button onClick={setWeek}>Week</Button>
+        <Button onClick={setMonth}>Month</Button>
+        <Button onClick={setYear}>Year</Button>
       </div>
       <DateRangePicker>
         <Range className="icon dots" fill="#666" width="32" height="32"/>
         <Flatpickr 
-          value={[new Date('2019-12-10'), new Date('2020-01-10')]} 
+          value={[props.startDate, props.endDate]} 
           options={{
             mode: "range",
             minDate: "2019-12-01",
-            maxDate: "today",
-            dateFormat: "d M Y"
+            maxDate: "2021-01-31",
+            dateFormat: "d M Y",
+            onClose: function(selectedDates, dateStr, instance) { // allow selection of the same date range
+              if(selectedDates.length === 1){
+                var date = new Date(selectedDates[0].getTime());
+                date.setDate(date.getDate() + 1)
+                console.log('selectedDates[0]', selectedDates[0].getDate())
+                console.log('date', date.getDate())
+                instance.setDate([selectedDates[0], date], true);
+              }
+            }
           }}
-          onChange={date => {
-            console.log('from', date[0]);
-            console.log('to', date[1]) 
-          }}
+          onChange={date => props.setDateRange(date[0], date[1])}
           />
       </DateRangePicker>
     </Styled>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header/Header'
 import LeftNav from './components/LeftNav/LeftNav'
 import ClinicsNav from './components/ClinicsNav/ClinicsNav'
@@ -10,7 +10,17 @@ import styled from 'styled-components'
 import './css/skeleton.css';
 
 const App: React.FC = () => {
-
+  
+  const [startDate, setStartDate] = useState(1575936000000) 
+  const [endDate, setEndDate] = useState(1578614400000) 
+  const setDateRange = (startDate: Date, endDate: Date) => {
+    // console.log('start', startDate)
+    // console.log('end', endDate)
+    if(startDate && endDate){
+      setStartDate(startDate.getTime())
+      setEndDate(endDate.getTime())
+    }
+  }
   return (
     <Wrapper>
       <LeftNav/>
@@ -20,11 +30,11 @@ const App: React.FC = () => {
           <h1>Analytics</h1>
           <Body>
             <ClinicsNavContainer>
-              <ClinicsNav startDate={1612051200000} endDate={1612137600000}/>
+              <ClinicsNav startDate={startDate} endDate={endDate}/>
             </ClinicsNavContainer>
             <Inner>
               <KeyIssues/>
-              <MonitoringPeriod/>
+              <MonitoringPeriod  startDate={startDate} endDate={endDate} setDateRange={setDateRange}/>
               <Graphs/>
               <StaffTable/>
             </Inner>
