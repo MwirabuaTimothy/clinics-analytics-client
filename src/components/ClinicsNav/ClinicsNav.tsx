@@ -5,6 +5,7 @@ import { ReactComponent as Dots } from '../../icons/v-menu.svg';
 import { useGetClinicsQuery } from "../../generated/graphql";
 
 interface Props {
+  setClinic: (clinicId:string) => void; 
   startDate: number;
   endDate: number;
 }
@@ -12,10 +13,6 @@ interface Props {
 const ClinicsNav: React.FC<Props> = (props) => {
   
   const [active, setActive] = useState('0') 
-
-  const selectClinic = (clinic_id: React.SetStateAction<string>) => {
-    setActive(clinic_id)
-  }
 
   let { data, loading, error } = useGetClinicsQuery({ 
     variables: {
@@ -25,7 +22,16 @@ const ClinicsNav: React.FC<Props> = (props) => {
   });
 
   if (loading) {
-    return <div>Loading</div>;
+    return <Styled>
+      <Title>Visits</Title>
+      {[1, 2, 3, 4, 5, 6].map(i => (
+        <Button key={i} >
+          <span>{ i }</span>
+          <span>Loading...</span>
+          <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+        </Button>
+      ))}
+    </Styled>
   }
   
   if (error) {
@@ -38,7 +44,7 @@ const ClinicsNav: React.FC<Props> = (props) => {
     <Styled>
       <Title>Visits</Title>
       {clinics?.map(clinic => (
-        <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => selectClinic(clinic.id)}>
+        <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => props.setClinic(clinic.id)}>
           <span>{ clinic.visitsCount }</span>
           <span>{ clinic.name }</span>
           <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
@@ -59,7 +65,8 @@ const Styled = styled.div`
     padding-left: 15px;
     padding-right: 25px;
     text-align: left;
-    &.active {
+    :active,
+    :focus {
       background-color: #4e1ed4;
       border-color: #4e1ed4;
       color: #fff;

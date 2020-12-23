@@ -28,6 +28,13 @@ const StaffTable: React.FC<Props> = (props) => {
 
   const staffs = data?.staffs;
 
+  const format:any = (str:string) => {
+    if(str[0] == '+'){
+      return <Positive>&#9650; {str}</Positive>
+    }
+    return <Negative>&#9660; {str}</Negative>
+  }
+
   return (
     <Styled>
       <table>
@@ -47,9 +54,9 @@ const StaffTable: React.FC<Props> = (props) => {
               <td>{staff.rank}</td>
               <td><Name>{staff.name}</Name></td>
               <td><b>{staff.efficiency_delta1}</b></td>
-              <td>{staff.efficiency_delta2}</td>
+              <td>{format(staff.efficiency_delta2)}</td>
               <td><b>{staff.nps_delta1}</b></td>
-              <td>{staff.nps_delta2}</td>
+              <td>{format(staff.nps_delta2)}</td>
               <td><Txt>{staff.efficiency + "%"}</Txt> <LineGraph filled={staff.efficiency + "%"}/></td>
               <td><Txt>{staff.reported_issues}</Txt> <LineGraph filled={staff.reported_issues*10 + "%"}/></td>
             </tr>
@@ -86,5 +93,11 @@ const Name = styled.span`
 const Txt = styled.span`
   margin-right: 20px;
   font-weight: 600;
-  color: #666
+  color: #666;
+`
+const Positive = styled.span`
+  color: green;
+`
+const Negative = styled.span`
+  color: red
 `

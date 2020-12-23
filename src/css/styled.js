@@ -13,6 +13,7 @@ export const Button = styled.button`
   height: 48px;
   position: relative;
   :active,
+  :focus,
   :hover {
     border-color: #4e1ed4;
     border-width: 2px;
@@ -22,6 +23,10 @@ export const Button = styled.button`
     }
     > svg circle {      
       fill: #4e1ed4;
+    }
+    > small,
+    > b {
+      color: #4e1ed4;
     }
   }
   > svg {      

@@ -4,13 +4,14 @@ import { Button, Title } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
 import { useGetIssuesQuery } from "../../generated/graphql";
 
-const KeyIssues: React.FC = () => {
+interface Props {
+  setIssue: (issueId:string) => void; 
+}
+
+const KeyIssues: React.FC<Props> = (props) => {
 
   const [active, setActive] = useState('0')
   
-  const selectIssue = (issue_id: React.SetStateAction<string>) => {
-    setActive(issue_id)
-  }
   let { data, loading, error } = useGetIssuesQuery();
 
   if (loading) {
@@ -28,7 +29,7 @@ const KeyIssues: React.FC = () => {
       <Title>Key Issues</Title>
       <div>
         {issues?.map(issue => (
-          <Button key={issue.id} className={issue.id === active ? "active" : ''} onClick={() => selectIssue(issue.id)}>
+          <Button key={issue.id} className={issue.id === active ? "active" : ''} onClick={() => props.setIssue(issue.id)}>
             <b>{ issue.name }</b>
             <small>{ issue.location }</small>
             <Dots className="icon dots" fill="#ddd" width="28" height="28"/>

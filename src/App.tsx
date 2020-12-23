@@ -8,6 +8,7 @@ import Graphs from './components/Graphs/Graphs'
 import StaffTable from './components/StaffTable/StaffTable'
 import styled from 'styled-components'
 import './css/skeleton.css';
+import { startOfDay, endOfDay } from 'date-fns';
 
 const App: React.FC = () => {
   
@@ -21,6 +22,26 @@ const App: React.FC = () => {
       setEndDate(endDate.getTime())
     }
   }
+  const setIssue = (issueId: string) => {
+    console.log('TODO: change issue using ', issueId) 
+    fetchData() // faker
+  }
+  
+  const setClinic = (clinicId: string) => {
+    console.log('TODO: change clinic using ', clinicId) 
+    fetchData() //faker
+  }
+    
+  const fetchData = () => {
+    let d1 = new Date(2019, 12, 1)
+    let d2 = new Date(2020, 6, 1)
+    let d3 = new Date()
+    let randomDate1 = new Date(d1.getTime() + Math.random() * (d2.getTime() - d1.getTime()))
+    let randomDate2 = new Date(d2.getTime() + Math.random() * (d3.getTime() - d2.getTime()))
+    setStartDate(startOfDay(randomDate1).getTime())
+    setEndDate(endOfDay(randomDate2).getTime())
+  }
+
   return (
     <Wrapper>
       <LeftNav/>
@@ -30,10 +51,10 @@ const App: React.FC = () => {
           <Title>Analytics</Title>
           <Body>
             <ClinicsNavContainer>
-              <ClinicsNav startDate={startDate} endDate={endDate}/>
+              <ClinicsNav startDate={startDate} endDate={endDate} setClinic={setClinic}/>
             </ClinicsNavContainer>
             <Inner>
-              <KeyIssues/>
+              <KeyIssues setIssue={setIssue}/>
               <MonitoringPeriod  startDate={startDate} endDate={endDate} setDateRange={setDateRange}/>
               <Graphs startDate={startDate} endDate={endDate}/>
               <StaffTable startDate={startDate} endDate={endDate}/>
