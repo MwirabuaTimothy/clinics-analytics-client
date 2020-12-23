@@ -31,7 +31,7 @@ export default Header;
 const Container = styled.div`
   background-color: #fff;
   height: 90px;
-  padding: 20px;
+  padding: 20px 40px;
 `
 
 const Btn = styled(Button)`
