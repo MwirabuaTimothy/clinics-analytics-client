@@ -61,12 +61,12 @@ const MonitoringPeriod: React.FC<Props> = (props) => {
             maxDate: "2021-01-31",
             dateFormat: "d M Y",
             onClose: function(selectedDates, dateStr, instance) { // allow selection of the same date range
-              if(selectedDates.length === 1){
-                var date = new Date(selectedDates[0].getTime());
-                date.setDate(date.getDate() + 1)
-                console.log('selectedDates[0]', selectedDates[0].getDate())
-                console.log('date', date.getDate())
-                instance.setDate([selectedDates[0], date], true);
+              let d1 = selectedDates[0].getTime()
+              let d2 = selectedDates[1].getTime()
+              if(d1 === d2){
+                var start = startOfDay(selectedDates[0]);
+                var end = endOfDay(selectedDates[0]);
+                instance.setDate([start, end], true);
               }
             }
           }}
