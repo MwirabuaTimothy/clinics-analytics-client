@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const client = new ApolloClient({ uri: 'http://localhost:5000' });
+// const client = new ApolloClient({ uri: 'http://localhost:5000' });
+const client = new ApolloClient({ uri: 'https://clinics-api.timtruston.com' });
 
 ReactDOM.render(
   <ApolloProvider client={client}>
