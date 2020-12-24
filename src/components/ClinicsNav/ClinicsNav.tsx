@@ -20,38 +20,38 @@ const ClinicsNav: React.FC<Props> = (props) => {
       endDate: props.endDate
     }
   });
-
-  if (loading) {
-    return <Styled>
-      <Title>Visits</Title>
-      {[1, 2, 3, 4, 5, 6].map(i => (
-        <Button key={i} >
-          <span>{ i }</span>
-          <span>Loading...</span>
-          <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-        </Button>
-      ))}
-    </Styled>
-  }
   
   if (error) {
     return <div>{error.message}</div>;
   }
   
-  const clinics = data?.clinics;
+  if (data){
+    const clinics = data?.clinics;
+    return (
+      <Styled>
+        <Title>Visits</Title>
+        {clinics?.map(clinic => (
+          <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => props.setClinic(clinic.id)}>
+            <span>{ clinic.visitsCount }</span>
+            <span>{ clinic.name }</span>
+            <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+          </Button>
+        ))}
+      </Styled>
+    );
+  }
 
-  return (
-    <Styled>
-      <Title>Visits</Title>
-      {clinics?.map(clinic => (
-        <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => props.setClinic(clinic.id)}>
-          <span>{ clinic.visitsCount }</span>
-          <span>{ clinic.name }</span>
-          <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
-        </Button>
-      ))}
-    </Styled>
-  );
+  // Loading state
+  return <Styled>
+    <Title>Loading Visits...</Title>
+    {[1, 2, 3, 4, 5, 6].map(i => (
+      <Button key={i} >
+        <span>{ i }</span>
+        <span>...</span>
+        <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
+      </Button>
+    ))}
+  </Styled>
 };
 
 export default ClinicsNav;

@@ -11,7 +11,7 @@ interface Props {
 
 const Graphs: React.FC<Props> = (props) => {
 
-  let { data, loading, error } = useGetVisitsQuery({ 
+  let { data, error } = useGetVisitsQuery({ 
     variables: {
       startDate: props.startDate,
       endDate: props.endDate,
@@ -19,40 +19,82 @@ const Graphs: React.FC<Props> = (props) => {
       issueId: 3,
     }
   });
-
-  if (loading) {
-    return <div>Loading</div>;
-  }
   
   if (error) {
     return <div>{error.message}</div>;
   }
   
-  const visits = data?.visits;
-
-
-  // footfall graph
-  let footfall:number[] =  [];
-
-  let dailyCount:any = {};
-  visits?.forEach(visit => {
-    if (dailyCount[visit.time]){
-      dailyCount[visit.time] ++
-    }
-    else {
-      dailyCount[visit.time] = 1
-    }
-  })
-  footfall =  Object.values(dailyCount);
   
-  if(footfall.length === 1){ // its the same date
-    footfall = [25, 36, 40, 35, 37, 47, 54] // mock visits per hour
+  if (data) {
+    
+    const visits = data?.visits;
+      
+    // footfall graph
+    let footfall:number[] =  [];
+
+    let dailyCount:any = {};
+    visits?.forEach(visit => {
+      if (dailyCount[visit.time]){
+        dailyCount[visit.time] ++
+      }
+      else {
+        dailyCount[visit.time] = 1
+      }
+    })
+    footfall =  Object.values(dailyCount);
+    
+    if(footfall.length === 1){ // its the same date
+      footfall = [25, 36, 40, 35, 37, 47, 54] // mock visits per hour
+    }
+
+    let nps = shuffle(footfall)
+    let revenue = shuffle(footfall)
+    // console.log(footfall, nps, revenue)
+
+    return (
+      <Styled>
+        <Graph
+          title="Foot Fall"
+          figure="13k"
+          sub="Patients"
+          data={footfall}
+          color="#43d39e"
+          trend={{
+            textClass: 'text-success',
+            icon: 'uil uil-arrow-up',
+            value: '+0,2'
+          }}/>
+        <Graph
+          title="Patient Satisfaction"
+          figure="7.8"
+          sub="NPS"
+          data={nps}
+          color="#ff0000"
+          trend={{
+            textClass: 'text-danger',
+            icon: 'uil uil-arrow-up',
+            value: '-0,1'
+          }}/>
+        <Graph
+          title="Revenue"
+          figure="4.2m"
+          sub="Kenya Shillings"
+          data={revenue}
+          color="#43d39e"
+          trend={{
+            textClass: 'text-success',
+            icon: 'uil uil-arrow-up',
+            value: '+2,4'
+          }}/>
+      </Styled>
+    );
+  
   }
 
+  // Loading state
+  let footfall = [10, 10, 10, 10, 10] // dummy data
   let nps = shuffle(footfall)
   let revenue = shuffle(footfall)
-  // console.log(footfall, nps, revenue)
-
   return (
     <Styled>
       <Graph
