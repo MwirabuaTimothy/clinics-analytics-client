@@ -27,7 +27,7 @@ const StaffTable: React.FC<Props> = (props) => {
     const staffs = data?.staffs;
   
     const format:any = (str:string) => {
-      if(str[0] == '+'){
+      if(str[0] === '+'){
         return <Positive>&#9650; {str}</Positive>
       }
       return <Negative>&#9660; {str}</Negative>
