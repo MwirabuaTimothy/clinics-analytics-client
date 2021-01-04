@@ -1,6 +1,5 @@
-import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/react-common';
-import * as ApolloReactHooks from '@apollo/react-hooks';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -206,15 +205,15 @@ export const GetClinicsDocument = gql`
  *   },
  * });
  */
-export function useGetClinicsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
+export function useGetClinicsQuery(baseOptions: Apollo.QueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
+        return Apollo.useQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
       }
-export function useGetClinicsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
+export function useGetClinicsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetClinicsQuery, GetClinicsQueryVariables>) {
+          return Apollo.useLazyQuery<GetClinicsQuery, GetClinicsQueryVariables>(GetClinicsDocument, baseOptions);
         }
 export type GetClinicsQueryHookResult = ReturnType<typeof useGetClinicsQuery>;
 export type GetClinicsLazyQueryHookResult = ReturnType<typeof useGetClinicsLazyQuery>;
-export type GetClinicsQueryResult = ApolloReactCommon.QueryResult<GetClinicsQuery, GetClinicsQueryVariables>;
+export type GetClinicsQueryResult = Apollo.QueryResult<GetClinicsQuery, GetClinicsQueryVariables>;
 export const GetIssuesDocument = gql`
     query GetIssues {
   issues {
@@ -240,15 +239,15 @@ export const GetIssuesDocument = gql`
  *   },
  * });
  */
-export function useGetIssuesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetIssuesQuery, GetIssuesQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetIssuesQuery, GetIssuesQueryVariables>(GetIssuesDocument, baseOptions);
+export function useGetIssuesQuery(baseOptions?: Apollo.QueryHookOptions<GetIssuesQuery, GetIssuesQueryVariables>) {
+        return Apollo.useQuery<GetIssuesQuery, GetIssuesQueryVariables>(GetIssuesDocument, baseOptions);
       }
-export function useGetIssuesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetIssuesQuery, GetIssuesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetIssuesQuery, GetIssuesQueryVariables>(GetIssuesDocument, baseOptions);
+export function useGetIssuesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetIssuesQuery, GetIssuesQueryVariables>) {
+          return Apollo.useLazyQuery<GetIssuesQuery, GetIssuesQueryVariables>(GetIssuesDocument, baseOptions);
         }
 export type GetIssuesQueryHookResult = ReturnType<typeof useGetIssuesQuery>;
 export type GetIssuesLazyQueryHookResult = ReturnType<typeof useGetIssuesLazyQuery>;
-export type GetIssuesQueryResult = ApolloReactCommon.QueryResult<GetIssuesQuery, GetIssuesQueryVariables>;
+export type GetIssuesQueryResult = Apollo.QueryResult<GetIssuesQuery, GetIssuesQueryVariables>;
 export const GetStaffsDocument = gql`
     query getStaffs($startDate: Float!, $endDate: Float!) {
   staffs(startDate: $startDate, endDate: $endDate) {
@@ -282,15 +281,15 @@ export const GetStaffsDocument = gql`
  *   },
  * });
  */
-export function useGetStaffsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
+export function useGetStaffsQuery(baseOptions: Apollo.QueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
+        return Apollo.useQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
       }
-export function useGetStaffsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
+export function useGetStaffsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetStaffsQuery, GetStaffsQueryVariables>) {
+          return Apollo.useLazyQuery<GetStaffsQuery, GetStaffsQueryVariables>(GetStaffsDocument, baseOptions);
         }
 export type GetStaffsQueryHookResult = ReturnType<typeof useGetStaffsQuery>;
 export type GetStaffsLazyQueryHookResult = ReturnType<typeof useGetStaffsLazyQuery>;
-export type GetStaffsQueryResult = ApolloReactCommon.QueryResult<GetStaffsQuery, GetStaffsQueryVariables>;
+export type GetStaffsQueryResult = Apollo.QueryResult<GetStaffsQuery, GetStaffsQueryVariables>;
 export const GetVisitsDocument = gql`
     query getVisits($clinicId: Float!, $issueId: Float!, $startDate: Float!, $endDate: Float!) {
   visits(clinicId: $clinicId, issueId: $issueId, startDate: $startDate, endDate: $endDate) {
@@ -325,12 +324,12 @@ export const GetVisitsDocument = gql`
  *   },
  * });
  */
-export function useGetVisitsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetVisitsQuery, GetVisitsQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetVisitsQuery, GetVisitsQueryVariables>(GetVisitsDocument, baseOptions);
+export function useGetVisitsQuery(baseOptions: Apollo.QueryHookOptions<GetVisitsQuery, GetVisitsQueryVariables>) {
+        return Apollo.useQuery<GetVisitsQuery, GetVisitsQueryVariables>(GetVisitsDocument, baseOptions);
       }
-export function useGetVisitsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetVisitsQuery, GetVisitsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetVisitsQuery, GetVisitsQueryVariables>(GetVisitsDocument, baseOptions);
+export function useGetVisitsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetVisitsQuery, GetVisitsQueryVariables>) {
+          return Apollo.useLazyQuery<GetVisitsQuery, GetVisitsQueryVariables>(GetVisitsDocument, baseOptions);
         }
 export type GetVisitsQueryHookResult = ReturnType<typeof useGetVisitsQuery>;
 export type GetVisitsLazyQueryHookResult = ReturnType<typeof useGetVisitsLazyQuery>;
-export type GetVisitsQueryResult = ApolloReactCommon.QueryResult<GetVisitsQuery, GetVisitsQueryVariables>;
+export type GetVisitsQueryResult = Apollo.QueryResult<GetVisitsQuery, GetVisitsQueryVariables>;
