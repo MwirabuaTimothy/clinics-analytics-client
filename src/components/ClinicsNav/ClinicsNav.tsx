@@ -12,9 +12,9 @@ interface Props {
 
 const ClinicsNav: React.FC<Props> = (props) => {
   
-  const [active, setActive] = useState('0') 
+  const [currentId, setCurrentId] = useState('1') 
 
-  let { data, loading, error } = useGetClinicsQuery({ 
+  let { data, error } = useGetClinicsQuery({ 
     variables: {
       startDate: props.startDate,
       endDate: props.endDate
@@ -24,6 +24,11 @@ const ClinicsNav: React.FC<Props> = (props) => {
   if (error) {
     return <div>{error.message}</div>;
   }
+
+  let changeClinic = (clinicId: string) =>{
+    setCurrentId(clinicId)
+    props.setClinic(clinicId)
+  }
   
   if (data){
     const clinics = data?.clinics;
@@ -31,7 +36,9 @@ const ClinicsNav: React.FC<Props> = (props) => {
       <Styled>
         <Title>Visits</Title>
         {clinics?.map(clinic => (
-          <Button key={clinic.id} className={clinic.id === active ? "active" : ''} onClick={() => props.setClinic(clinic.id)}>
+          <Button key={clinic.id} 
+            className={currentId === clinic.id ? "active" : ''} 
+            onClick={() => changeClinic(clinic.id)}>
             <span>{ clinic.visitsCount }</span>
             <span>{ clinic.name }</span>
             <Dots className="icon dots" fill="#ddd" width="28" height="28"/>
@@ -65,6 +72,7 @@ const Styled = styled.div`
     padding-left: 15px;
     padding-right: 25px;
     text-align: left;
+    &.active,
     :active,
     :focus {
       background-color: #4e1ed4;
