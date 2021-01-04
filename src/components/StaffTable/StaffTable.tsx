@@ -80,7 +80,7 @@ const StaffTable: React.FC<Props> = (props) => {
           </thead>
           <tbody>
             {[1, 2, 3, 4].map(i => (
-              <tr>
+              <tr key={i}>
                 <td>{i}</td>
                 <td><Name>...</Name></td>
                 <td><b>...</b></td>
