@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Button, Title } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
-import { useGetClinicsQuery } from "../../generated/graphql";
+import { useGetClinicsQuery } from "../../graphql/generated";
 
 interface Props {
   setClinic: (clinicId:string) => void; 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Graph from './Graph';
 import styled from 'styled-components'
-import { useGetVisitsQuery } from "../../generated/graphql";
+import { useGetVisitsQuery } from "../../graphql/generated";
 import { shuffle } from '../../utilities';
 
 interface Props {

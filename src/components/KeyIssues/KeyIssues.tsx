@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { Button, Title } from '../../css/styled';
 import { ReactComponent as Dots } from '../../icons/v-menu.svg';
-import { useGetIssuesQuery } from "../../generated/graphql";
+import { useGetIssuesQuery } from "../../graphql/generated";
 
 interface Props {
   setIssue: (issueId:string) => void; 

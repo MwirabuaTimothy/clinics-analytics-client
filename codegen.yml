@@ -1,8 +1,8 @@
 overwrite: true
 schema: 'http://localhost:5000'
-documents: 'src/**/*.graphql'
+documents: 'src/graphql/queries.graphql'
 generates:
-  src/generated/graphql.tsx:
+  src/graphql/generated.tsx:
     config:
       noNamespaces: true
       withComponent: false

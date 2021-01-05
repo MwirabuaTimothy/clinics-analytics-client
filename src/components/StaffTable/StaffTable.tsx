@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { useGetStaffsQuery } from "../../generated/graphql";
+import { useGetStaffsQuery } from "../../graphql/generated";
 import LineGraph from '../Graphs/LineGraph';
 
 
